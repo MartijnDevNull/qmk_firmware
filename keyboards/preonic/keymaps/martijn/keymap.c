@@ -32,26 +32,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [0] = LAYOUT_preonic_2x2u( \
-  KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
-  MO(1),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
-  KC_LSPO,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, \
-  KC_LCTL,   KC_LGUI, MO(3),   KC_LALT,          MO(2),   KC_SPC,           KC_LGUI, KC_DLR,  KC_PSCR, KC_LCTL
+  KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
+  MO(1),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
+  KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, \
+  KC_LCTL,  KC_LGUI, MO(3),   KC_LALT,          MO(2),   KC_SPC,           KC_LGUI, KC_DLR,  KC_PSCR, KC_LCTL
 ),
 
-/* POKER
- * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |Poker |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |enter |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |shift |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ctrl |  os  | mod3  | alt  |  program   |    space    | os   | $    | print| ctrl |
- * `-----------------------------------------------------------------------------------'
- */
+
 [1] = LAYOUT_preonic_2x2u( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_DEL, \
   KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    XXXXXXX,   XXXXXXX,   T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    KC_ENT, \
@@ -60,19 +48,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,   KC_SPC,               KC_TRNS,   XXXXXXX,   XXXXXXX,   KC_LCTL
 ),
 
-/* PROGMAM
- * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |Poker |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |enter |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |shift |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ctrl |  os  | mod3  | alt  |  program   |    space    | os   | $    | print| ctrl |
- * `-----------------------------------------------------------------------------------'
- */
 [2] = LAYOUT_preonic_2x2u( \
   XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11, \
   XXXXXXX,   KC_GRV,  KC_TILD, KC_DLR,  XXXXXXX, XXXXXXX, XXXXXXX, KC_DQUO,  KC_LCBR,  KC_RCBR, XXXXXXX, XXXXXXX, \
@@ -81,23 +56,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,   XXXXXXX, KC_TRNS, XXXXXXX,          KC_TRNS, KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
-/* EXTRA
- * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |Poker |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |enter |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |shift |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ctrl |  os  | mod3  | alt  |  program   |    space    | os   | $    | print| ctrl |
- * `-----------------------------------------------------------------------------------'
- */
 [3] = LAYOUT_preonic_2x2u( \
   XXXXXXX,   RESET,     EEP_RST,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, \
   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_7,    KC_8,    KC_9,    XXXXXXX, \
-  XXXXXXX,   XXXXXXX,   MU_TOG,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_4,    KC_5,    KC_6,    XXXXXXX, \
+  XXXXXXX,   XXXXXXX,   MU_TOG,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_4,    KC_5,    KC_6,    XXXXXXX, \
   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_1,    KC_2,    KC_3,    XXXXXXX, \
   XXXXXXX,   XXXXXXX,   KC_TRNS,   XXXXXXX,              KC_TRNS,   KC_SPC,               KC_0,    KC_0,    KC_0,    XXXXXXX
 )
