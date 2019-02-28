@@ -16,6 +16,9 @@
 #define PASTE     LCTL(KC_V)
 #define T_PREV    LCTL(KC_PGUP)
 #define T_NEXT    LCTL(KC_PGDN)
+#define N_TAB     LCTL(KC_T)
+#define W_QUIT    LALT(KC_F4)
+
 
 /*
  * MIDI options
