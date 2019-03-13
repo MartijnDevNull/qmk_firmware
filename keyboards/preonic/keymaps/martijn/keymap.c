@@ -16,6 +16,22 @@
 
 #include QMK_KEYBOARD_H
 
+#define _BASE    0
+#define _POKER   1
+#define _PROGRAM 2
+#define _EXTRA   3
+
+#define POK   MO(_POKER)
+#define PROG  MO(_PROGRAM)
+#define EXTR  MO(_EXTRA)
+
+enum custom_keycodes {
+  TST = SAFE_RANGE,
+  SONG
+};
+
+float song[][2] = SONG(MARIO_MUSHROOM);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
@@ -31,16 +47,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | ctrl |  os  | mod3  | alt  |  program   |    space    | os   | $    | print| ctrl |
  * `-----------------------------------------------------------------------------------'
  */
-[0] = LAYOUT_preonic_2x2u( \
+[_BASE] = LAYOUT_preonic_2x2u( \
   KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
-  MO(1),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
+  POK,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
   KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, \
-  KC_LCTL,  KC_LGUI, MO(3),   KC_LALT,          MO(2),   KC_SPC,           KC_LGUI, KC_DLR,  KC_PSCR, KC_LCTL
+  KC_LCTL,  KC_LGUI, EXTR,    KC_LALT,          PROG,    KC_SPC,           KC_LGUI, KC_DLR,  KC_PSCR, KC_LCTL
 ),
 
 
-[1] = LAYOUT_preonic_2x2u( \
+[_POKER] = LAYOUT_preonic_2x2u( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_DEL, \
   KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     XXXXXXX,   T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
   KC_TRNS, SELECT,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
@@ -48,62 +64,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,   KC_SPC,               KC_TRNS,   XXXXXXX,   XXXXXXX,   KC_LCTL
 ),
 
-[2] = LAYOUT_preonic_2x2u( \
+[_PROGRAM] = LAYOUT_preonic_2x2u( \
   XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
   XXXXXXX,   KC_GRV,  KC_DLR,  KC_TILD, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,  KC_RBRC, XXXXXXX,  XXXXXXX, \
-  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,  XXXXXXX,  XXXXXXX, KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
-  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LSFT, \
-  XXXXXXX,   XXXXXXX, KC_TRNS, XXXXXXX,          KC_TRNS,  KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX
+  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,  OSUP,     OSDOWN,  KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
+  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, TST,     XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LSFT, \
+  XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 
-[3] = LAYOUT_preonic_2x2u( \
+[_EXTRA] = LAYOUT_preonic_2x2u( \
   XXXXXXX,   RESET,     EEP_RST,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, \
-  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_7,    KC_8,    KC_9,    XXXXXXX, \
+  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   SONG,      XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_7,    KC_8,    KC_9,    XXXXXXX, \
   XXXXXXX,   XXXXXXX,   MU_TOG,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_4,    KC_5,    KC_6,    XXXXXXX, \
   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_1,    KC_2,    KC_3,    XXXXXXX, \
-  XXXXXXX,   XXXXXXX,   KC_TRNS,   XXXXXXX,              KC_TRNS,   KC_SPC,               KC_0,    KC_0,    KC_0,    XXXXXXX
+  XXXXXXX,   XXXXXXX,   KC_TRNS,   XXXXXXX,              XXXXXXX,   KC_SPC,               KC_0,    KC_0,    KC_0,    XXXXXXX
 )
 
 };
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//   switch (keycode) {
-//         case QWERTY:
-//           if (record->event.pressed) {
-//             set_single_persistent_default_layer(_QWERTY);
-//           }
-//           return false;
-//           break;
-//         case POKER:
-//           if (record->event.pressed) {
-//             layer_on(_POKER);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           } else {
-//             layer_off(_POKER);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           }
-//           return false;
-//           break;
-//         case PROGMAM:
-//           if (record->event.pressed) {
-//             layer_on(_PROGRAM);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           } else {
-//             layer_off(_PROGRAM);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           }
-//           return false;
-//           break;
-//         case EXTRA:
-//           if (record->event.pressed) {
-//             layer_on(_EXTRA);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           } else {
-//             layer_off(_EXTRA);
-//             // update_tri_layer(_POKER, _PROGRAM, _EXTRA);
-//           }
-//           return false;
-//           break;
-//       }
-//     return true;
-// };
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case TST:
+      if (record->event.pressed) {
+        // when keycode QMKBEST is pressed
+        SEND_STRING("QMK is the best thing ever!");
+      } else {
+        // when keycode QMKBEST is released
+      }
+      break;
+    
+    case SONG:
+      if (record->event.pressed) {
+        PLAY_SONG(song);
+      } else { 
+        
+      }
+      break;
+
+  }
+  return true;
+};
