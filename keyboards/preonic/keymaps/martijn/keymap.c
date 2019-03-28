@@ -26,7 +26,7 @@
 #define EXTR  MO(_EXTRA)
 
 enum custom_keycodes {
-  TST = SAFE_RANGE,
+  OKE = SAFE_RANGE,
   SONG
 };
 
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
   POK,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
   KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, \
-  KC_LCTL,  KC_LGUI, EXTR,    KC_LALT,          PROG,    KC_SPC,           KC_LGUI, KC_DLR,  KC_PSCR, KC_LCTL
+  KC_LCTL,  KC_LGUI, EXTR,    KC_LALT,          PROG,    KC_SPC,           KC_LGUI, OKE,     KC_PSCR, KC_LCTL
 ),
 
 
@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
-  XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
-  XXXXXXX,   KC_GRV,  KC_DLR,  KC_TILD, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,  KC_RBRC, XXXXXXX,  XXXXXXX, \
-  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,  OSDOWN,   OSUP,  KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
-  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, TST,     XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LSFT, \
-  XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX
+  XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,       KC_F5,    KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
+  XXXXXXX,   KC_GRV,  KC_DLR,  KC_TILD, KC_ASTERISK, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,  KC_RBRC, XXXXXXX,  XXXXXXX, \
+  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,      OSDOWN,   OSUP,  KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
+  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LSFT, \
+  XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX,  KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 
 [_EXTRA] = LAYOUT_preonic_2x2u( \
@@ -84,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case TST:
+    case OKE:
       if (record->event.pressed) {
         // when keycode QMKBEST is pressed
-        SEND_STRING("QMK is the best thing ever!");
+        SEND_STRING(":+1:");
       } else {
         // when keycode QMKBEST is released
       }
