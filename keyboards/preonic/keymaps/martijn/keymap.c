@@ -27,6 +27,7 @@
 
 enum custom_keycodes {
   OKE = SAFE_RANGE,
+  HEADP,
   SONG
 };
 
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_POKER] = LAYOUT_preonic_2x2u( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_DEL, \
-  KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     XXXXXXX,   T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
+  KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     HEADP,     T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
   KC_TRNS, SELECT,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
   KC_LSFT, XXXXXXX, XXXXXXX, COPY,    PASTE,    KC_TRNS,   KC_END,    XXXXXXX,   KC_TRNS,   KC_TRNS,   XXXXXXX,   KC_LSFT, \
   KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,   KC_SPC,               KC_TRNS,   XXXXXXX,   XXXXXXX,   KC_LCTL
@@ -66,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
   XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,       KC_F5,    KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
-  XXXXXXX,   KC_GRV,  KC_DLR,  KC_TILD, KC_ASTERISK, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,  KC_RBRC, XXXXXXX,  XXXXXXX, \
-  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,      OSDOWN,   OSUP,  KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
-  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LSFT, \
+  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD, KC_ASTERISK, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LBRC,  KC_RBRC, XXXXXXX,  XXXXXXX, \
+  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS, KC_EQL,      OSDOWN,   OSUP,    KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
+  KC_LSFT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,  XXXXXXX, KC_WH_D,  KC_WH_U,  XXXXXXX, XXXXXXX,  KC_LSFT, \
   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX,  KC_SPC,            XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 
@@ -86,12 +87,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case OKE:
       if (record->event.pressed) {
-        // when keycode QMKBEST is pressed
         SEND_STRING(":+1:");
-      } else {
-        // when keycode QMKBEST is released
       }
       break;
+
+    case HEADP:
+      if (record->event.pressed) {
+        // when keycode QMKBEST is pressed
+        SEND_STRING("connect 04:5D:4B:40:E1:80");
+      }
+
+      break;  
     
     case SONG:
       if (record->event.pressed) {

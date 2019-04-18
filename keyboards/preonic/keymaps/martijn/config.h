@@ -9,6 +9,8 @@
 
 #endif
 
+#define TAPPING_TERM 200
+
 #define MUSIC_MASK (keycode != KC_NO)
 
 #define SELECT    LCTL(KC_LSFT)
@@ -19,8 +21,15 @@
 #define N_TAB     LCTL(KC_T)
 #define W_QUIT    LALT(KC_F4)
 
+#define SWITCH    LALT(KC_TAB)
+
 #define OSUP      LCTL(LALT(KC_UP))
 #define OSDOWN    LCTL(LALT(KC_DOWN))
+
+#define MOUSEKEY_DELAY             50
+#define MOUSEKEY_INTERVAL          30
+#define MOUSEKEY_WHEEL_MAX_SPEED   10
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 15
 
 
 /*
