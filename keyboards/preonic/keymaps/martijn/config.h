@@ -21,7 +21,7 @@
 #define N_TAB     LCTL(KC_T)
 #define W_QUIT    LALT(KC_F4)
 
-#define SWITCH    LALT(KC_TAB)
+#define SWITCH    LALT(KC_ESC)
 
 #define OSUP      LCTL(LALT(KC_UP))
 #define OSDOWN    LCTL(LALT(KC_DOWN))
