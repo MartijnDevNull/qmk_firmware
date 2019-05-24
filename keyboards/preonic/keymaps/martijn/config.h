@@ -10,7 +10,12 @@
 #endif
 
 #define MUSIC_MASK (keycode != KC_NO)
+
 #define SELECT    LCTL(KC_LSFT)
+#define COPY      LCTL(KC_C)
+#define PASTE     LCTL(KC_V)
+#define T_PREV    LCTL(KC_PGUP)
+#define T_NEXT    LCTL(KC_PGDN)
 
 /*
  * MIDI options
