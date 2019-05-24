@@ -28,7 +28,8 @@
 enum custom_keycodes {
   OKE = SAFE_RANGE,
   HEADP,
-  SONG
+  SONG,
+  C_HOME
 };
 
 float song[][2] = SONG(MARIO_MUSHROOM);
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_DEL, \
   KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     HEADP,     T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
   KC_TRNS, SELECT,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
-  KC_LSFT, XXXXXXX, XXXXXXX, COPY,    PASTE,    KC_TRNS,   KC_END,    XXXXXXX,   TER_L,     TER_R,     XXXXXXX,   KC_LSFT, \
+  KC_LSFT, XXXXXXX, XXXXXXX, COPY,    PASTE,    KC_TRNS,   KC_END,    XXXXXXX,   TER_L,     TER_R,     XXXXXXX,   C_HOME, \
   KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,   KC_SPC,               KC_TRNS,   XXXXXXX,   XXXXXXX,   KC_LCTL
 ),
 
@@ -93,8 +94,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case HEADP:
       if (record->event.pressed) {
-        // when keycode QMKBEST is pressed
         SEND_STRING("connect 04:5D:4B:40:E1:80");
+      }
+
+      break;  
+
+    case C_HOME:
+      if (record->event.pressed) {
+        SEND_STRING("~/");
       }
 
       break;  
