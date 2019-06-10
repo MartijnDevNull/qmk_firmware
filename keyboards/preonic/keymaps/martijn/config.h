@@ -3,6 +3,13 @@
 
 #include "config_common.h"
 
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x6061
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Ortholinear Keyboards
+#define PRODUCT         The Preonic Keyboard
+#define DESCRIPTION     A compact ortholinear keyboard
+
 #ifdef AUDIO_ENABLE
     //#define STARTUP_SONG SONG(PREONIC_SOUND)
     #define STARTUP_SONG SONG(NO_SOUND)
