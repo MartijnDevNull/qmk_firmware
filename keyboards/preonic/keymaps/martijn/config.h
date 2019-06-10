@@ -21,6 +21,8 @@
 #define N_TAB     LCTL(KC_T)
 #define W_QUIT    LALT(KC_F4)
 
+#define ALL       LCTL(KC_A)
+
 #define TER_L     LCTL(KC_COMM)
 #define TER_R     LCTL(KC_DOT)
 
