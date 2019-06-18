@@ -94,23 +94,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case HEADP:
       if (record->event.pressed) {
-        SEND_STRING("connect 04:5D:4B:40:E1:80");
+        SEND_STRING("connect CC:98:8B:D1:B2:95");
       }
 
-      break;  
+      break;
 
     case C_HOME:
       if (record->event.pressed) {
         SEND_STRING("~/");
       }
 
-      break;  
-    
+      break;
+
     case SONG:
       if (record->event.pressed) {
         PLAY_SONG(song);
-      } else { 
-        
+      } else {
+
       }
       break;
 
