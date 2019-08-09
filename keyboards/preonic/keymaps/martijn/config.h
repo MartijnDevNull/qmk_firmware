@@ -31,6 +31,9 @@
 #define OSUP      LCTL(LALT(KC_UP))
 #define OSDOWN    LCTL(LALT(KC_DOWN))
 
+#define FOLD      LCTL(KC_PMNS)
+#define UFOLD     LCTL(KC_PPLS)
+
 #define MOUSEKEY_DELAY             50
 #define MOUSEKEY_INTERVAL          30
 #define MOUSEKEY_WHEEL_MAX_SPEED   10
