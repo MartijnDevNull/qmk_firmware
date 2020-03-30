@@ -26,6 +26,9 @@
 #define EXTR  MO(_EXTRA)
 
 
+#define PRESS(keycode) register_code16(keycode)
+#define RELEASE(keycode) unregister_code16(keycode)
+
 #define JOE X(THUMBS)
 #define SNEKKY X(SNEK)
 
@@ -33,7 +36,8 @@ enum custom_keycodes {
   HEADP = SAFE_RANGE,
   SONG,
   C_HOME,
-  WPM
+  YANK,
+  WORD
 };
 
 enum unicode_names {
@@ -83,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
   KC_F12,    KC_F1,   KC_F2,   KC_F3,              KC_F4,             KC_F5,    KC_F6,     KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
-  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       KC_F11,   WPM,       _______,  KC_LBRC,  KC_RBRC, _______,  _______, \
+  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       KC_F11,   YANK,      WORD,     KC_LBRC,  KC_RBRC, _______,  _______, \
   KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS,            KC_EQL,            OSDOWN,   OSUP,      KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
   KC_LSFT,   _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,  _______,  _______,   KC_WH_D,  KC_WH_U,  _______, _______,  KC_LSFT, \
   _______,   _______, _______, _______,                               _______,  KC_SPC,              _______,  _______, _______,  _______
@@ -98,6 +102,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 
 };
+
+void TAP(uint16_t keycode) {
+    PRESS(keycode);
+    RELEASE(keycode);
+}
+
+void CTRL(uint16_t keycode) {
+  PRESS(KC_LCTRL);
+    TAP(keycode);
+  RELEASE(KC_LCTRL);
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -115,10 +130,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       break;
 
-    case WPM:
+    case YANK:
       if (record->event.pressed) {
-        // SEND_STRING(get_current_wpm());
-	SEND_STRING("joe");
+        // Go to end
+        TAP(KC_END);
+
+        // Select to home
+        PRESS(KC_LSHIFT);
+	        TAP(KC_HOME);
+	    RELEASE(KC_LSHIFT);
+
+        // Remove
+        TAP(KC_BSPACE);
+      }
+
+      break;
+
+    case WORD:
+      if (record->event.pressed) {
+        // Go to the right
+        CTRL(KC_RIGHT);
+
+        // Hold shift
+        PRESS(KC_LSHIFT);
+          // Go left
+          CTRL(KC_LEFT);
+        RELEASE(KC_LSHIFT);
       }
 
       break;
@@ -126,9 +163,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SONG:
       if (record->event.pressed) {
         PLAY_SONG(song);
-      } else {
-
       }
+
       break;
 
   }
