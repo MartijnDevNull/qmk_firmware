@@ -34,8 +34,6 @@
 #define FOLD      LCTL(KC_PMNS)
 #define UFOLD     LCTL(KC_PPLS)
 
-#define SBOOKMARK LSFT(KC_F11)
-
 #define MOUSEKEY_DELAY             50
 #define MOUSEKEY_INTERVAL          30
 #define MOUSEKEY_WHEEL_MAX_SPEED   10
