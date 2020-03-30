@@ -25,13 +25,27 @@
 #define PROG  MO(_PROGRAM)
 #define EXTR  MO(_EXTRA)
 
+
+#define JOE X(THUMBS)
+#define SNEKKY X(SNEK)
+
 enum custom_keycodes {
-  OKE = SAFE_RANGE,
-  HEADP,
+  HEADP = SAFE_RANGE,
   SONG,
   C_HOME,
   WPM
 };
+
+enum unicode_names {
+    THUMBS,
+    SNEK
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [THUMBS]  = 0x1F44D,  // 👍
+    [SNEK]  = 0x1F40D, // 🐍
+};
+
 
 float song[][2] = SONG(MARIO_MUSHROOM);
 
@@ -51,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_preonic_2x2u( \
-  KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
-  POK,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
-  KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, \
-  KC_LCTL,  EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,           KC_LGUI, OKE,     KC_PSCR, KC_LCTL
+  KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_BSPC, \
+  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    KC_BSLS, \
+  POK,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_ENT, \
+  KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, \
+  KC_LCTL,  EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,           KC_LGUI, JOE,    KC_PSCR, KC_LCTL
 ),
 
 
@@ -87,12 +101,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case OKE:
-      if (record->event.pressed) {
-        SEND_STRING(":+1:");
-      }
-      break;
-
     case HEADP:
       if (record->event.pressed) {
         SEND_STRING("connect CC:98:8B:D1:B2:95");
@@ -125,4 +133,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   }
   return true;
+};
+
+void matrix_init_user(void) {
+    set_unicode_input_mode(UC_LNX);
+
+    //
+    // This is operating system specific.
+    //
+    //   UC_OSX: MacOS Unicode Hex Input support. Works only up to 0xFFFF.
+    //   Disabled by default.      To enable: go to System Preferences ->
+    //   Keyboard -> Input Sources, and enable Unicode Hex.
+    //
+    //   UC_OSX_RALT: Same as UC_OSX, but sends the Right Alt key for unicode
+    //   input
+    //
+    //   UC_LNX: Unicode input method under Linux. Works up to 0xFFFFF.
+    //   Should work almost anywhere on ibus enabled distros. Without ibus,
+    //   this works under GTK apps, but rarely anywhere else.
 };
