@@ -80,17 +80,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_POKER] = LAYOUT_preonic_2x2u( \
   _______, _______, _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
   KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
-  KC_TRNS, SELECT,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
-  KC_LSFT, _______, _______, COPY,    PASTE,    KC_TRNS,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
-  KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,   KC_SPC,               KC_TRNS,   _______,   _______,   KC_LCTL
+  _______, KC_LCTL, KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
+  _______, _______, _______, COPY,    PASTE,    _______,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
+  _______, _______, _______, _______,           _______,   KC_SPC,               _______,   _______,   _______,   _______
 ),
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
   KC_F12,    KC_F1,   KC_F2,   KC_F3,              KC_F4,             KC_F5,    KC_F6,     KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
-  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       KC_F11,   YANK,      WORD,     KC_LBRC,  KC_RBRC, _______,  _______, \
-  KC_TRNS,   KC_PLUS, KC_UNDS, KC_MINS,            KC_EQL,            OSDOWN,   OSUP,      KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOTE, KC_ESC, \
-  KC_LSFT,   _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,  _______,  _______,   KC_WH_D,  KC_WH_U,  _______, _______,  KC_LSFT, \
-  _______,   _______, _______, _______,                               _______,  KC_SPC,              _______,  _______, _______,  _______
+  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       _______,  YANK,      WORD,     KC_LBRC,  KC_RBRC, _______,  _______, \
+  _______,   KC_PLUS, KC_UNDS, KC_MINS,            KC_EQL,            OSDOWN,   OSUP,      KC_DQUO,  KC_LCBR,  KC_RCBR, _______,  _______, \
+  KC_LSFT,   _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,  _______,  _______,   KC_WH_D,  KC_WH_U,  _______, _______,  _______, \
+  _______,   _______, _______, _______,                               _______,  _______,             _______,  _______, _______,  _______
 ),
 
 [_EXTRA] = LAYOUT_preonic_2x2u( \
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_7,    KC_8,    KC_9,    _______, _______, \
   _______,   _______,   MU_TOG,    _______,   _______,   _______,   HEADP,     KC_4,    KC_5,    KC_6,    KC_DEL,  _______, \
   _______,   _______,   _______,   _______,   _______,   _______,   SONG,      KC_1,    KC_2,    KC_3,    _______, _______, \
-  _______,   _______,   KC_TRNS,   _______,              _______,   KC_SPC,             KC_0,    KC_0,    KC_0,    _______
+  _______,   _______,   _______,   _______,              _______,   _______,            KC_0,    KC_0,    KC_0,    _______
 )
 
 };
