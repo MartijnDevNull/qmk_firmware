@@ -14,6 +14,11 @@
 #define MUSIC_MASK (keycode != KC_NO)
 
 #define COPY      LCTL(KC_C)
+#define C_SELECT  LCTL(KC_LSFT)
+#define C_LEFT    LCTL(KC_LEFT)
+#define C_RIGHT   LCTL(KC_RIGHT)
+#define C_UP      LCTL(KC_UP)
+#define C_DOWN    LCTL(KC_DOWN)
 #define PASTE     LCTL(KC_V)
 #define T_PREV    LCTL(KC_PGUP)
 #define T_NEXT    LCTL(KC_PGDN)

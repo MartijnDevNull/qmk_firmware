@@ -19,11 +19,13 @@
 #define _BASE    0
 #define _POKER   1
 #define _PROGRAM 2
-#define _EXTRA   3
+#define _SELECT  3
+#define _EXTRA   4
 
-#define POK   MO(_POKER)
-#define PROG  MO(_PROGRAM)
-#define EXTR  MO(_EXTRA)
+#define POK    MO(_POKER)
+#define PROG   MO(_PROGRAM)
+#define SELECT MO(_SELECT)
+#define EXTR   MO(_EXTRA)
 
 
 #define PRESS(keycode) register_code16(keycode)
@@ -78,19 +80,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_POKER] = LAYOUT_preonic_2x2u( \
-  _______, _______, _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
-  KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
-  _______, KC_LCTL, KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
+  KC_CAPS, _______, _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
+  _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
+  _______, SELECT,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
   _______, _______, _______, COPY,    PASTE,    _______,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
   _______, _______, _______, _______,           _______,   KC_SPC,               _______,   _______,   _______,   _______
 ),
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
   KC_F12,    KC_F1,   KC_F2,   KC_F3,              KC_F4,             KC_F5,    KC_F6,     KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11, \
-  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       _______,  YANK,      WORD,     KC_LBRC,  KC_RBRC, _______,  _______, \
+  SWITCH,    KC_GRV,  KC_DLR,  KC_TILD,            KC_ASTERISK,       _______,  _______,   _______,  KC_LBRC,  KC_RBRC, _______,  _______, \
   _______,   KC_PLUS, KC_UNDS, KC_MINS,            KC_EQL,            OSDOWN,   OSUP,      KC_DQUO,  KC_LCBR,  KC_RCBR, KC_QUOT,  _______, \
   KC_LSFT,   _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,  _______,  _______,   KC_WH_D,  KC_WH_U,  _______, _______,  _______, \
   _______,   _______, _______, _______,                               _______,  _______,             _______,  _______, _______,  _______
+),
+
+[_SELECT] = LAYOUT_preonic_2x2u( \
+  _______,   _______,   _______,  _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
+  _______,   _______,   _______,  _______, _______, _______, _______, YANK,    C_UP,     WORD,    _______, _______, \
+  _______,   _______,   C_SELECT, _______, _______, _______, _______, C_LEFT,  C_DOWN,   C_RIGHT, _______, _______, \
+  _______,   _______,   _______,  _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
+  _______,   _______,   _______,  _______,          _______, _______,          _______,  _______, _______, _______
 ),
 
 [_EXTRA] = LAYOUT_preonic_2x2u( \
