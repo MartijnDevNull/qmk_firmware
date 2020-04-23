@@ -67,8 +67,6 @@ enum custom_keycodes {
   HEADP = SAFE_RANGE,
   SONG,
   C_HOME,
-  YANK,
-  WORD
 };
 
 enum {
@@ -135,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SELECT] = LAYOUT_preonic_2x2u( \
   _______,   _______,  _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______, \
-  _______,   _______,  _______,   _______, _______, KC_T,    _______, YANK,    KC_UP,    WORD,     _______, _______, \
+  _______,   _______,  _______,   _______, _______, KC_T,    _______, _______, KC_UP,    _______,  _______, _______, \
   _______,   _______,  _______,   _______, KC_F,    _______, _______, KC_LEFT, KC_DOWN,  KC_RIGHT, KC_BSPC, _______, \
   _______,   _______,  _______,   KC_C,    KC_V,    _______, _______, _______, _______,  _______,  _______, _______, \
   _______,   _______,  _______,   _______,          _______, _______,          _______,  _______,  _______, _______
@@ -164,35 +162,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case C_HOME:
       if (record->event.pressed) {
         SEND_STRING("~/");
-      }
-
-      break;
-
-    case YANK:
-      if (record->event.pressed) {
-        // TODO: doesn't work with tapdance
-        // Go to end
-        TAP(KC_END);
-
-        // Select to home
-        PRESS(KC_LSHIFT);
-	        TAP(KC_HOME);
-	    RELEASE(KC_LSHIFT);
-
-        // Remove
-        TAP(KC_BSPACE);
-      }
-
-      break;
-
-    case WORD:
-      if (record->event.pressed) {
-        // Go to the right
-        CTRL(KC_RIGHT);
-
-        // Go left
-        CTRL(KC_LEFT);
-
       }
 
       break;
