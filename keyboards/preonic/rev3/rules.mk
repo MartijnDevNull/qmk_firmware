@@ -15,7 +15,7 @@ NKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: ht
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 WS2812_DRIVER = bitbang
 API_SYSEX_ENABLE = no
 
@@ -27,6 +27,8 @@ SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 ENCODER_ENABLE = yes
 DIP_SWITCH_ENABLE = no
 
-LAYOUTS = ortho_5x12
-
+DYNAMIC_MACRO_ENABLE = yes
+WPM_ENABLE = yes
 TAP_DANCE_ENABLE=yes
+
+LAYOUTS = ortho_5x12

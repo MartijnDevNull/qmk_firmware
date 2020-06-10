@@ -23,6 +23,7 @@
 #define _EXTRA   4
 
 #define PROG   MO(_PROGRAM)
+#define POKER  MO(_POKER)
 #define EXTR   MO(_EXTRA)
 
 #define PRESS(keycode) register_code16(keycode)
@@ -43,19 +44,21 @@ void CTRL(uint16_t keycode) {
 }
 
 void dance_cln_finished (qk_tap_dance_state_t *state, void *user_data) {
+  layer_on(_SELECT);
   if (state->count == 1) {
-    layer_on(_POKER);
+    PRESS(KC_LCTRL);
+    PRESS(KC_LSHIFT);
   } else {
-    layer_on(_SELECT);
     PRESS(KC_LCTRL);
   }
 }
 
 void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
+  layer_off(_SELECT);
   if (state->count == 1) {
-    layer_off(_POKER);
+    RELEASE(KC_LSHIFT);
+    RELEASE(KC_LCTRL);
   } else {
-    layer_off(_SELECT);
     RELEASE(KC_LCTRL);
   }
 }
@@ -88,7 +91,7 @@ const uint32_t PROGMEM unicode_map[] = {
 };
 
 
-float song[][2] = SONG(MARIO_MUSHROOM);
+float mario[][2] = SONG(ZELDA_TREASURE);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -106,20 +109,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_preonic_2x2u( \
-  KC_ESC,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_BSPC, \
-  KC_TAB,           KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    KC_BSLS, \
-  TD(LAYER_SWITCH), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_ENT, \
-  KC_LSPO,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, \
-  KC_LCTL,          EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,  KC_LGUI, JOE,    KC_PSCR, KC_LCTL
+  KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_BSPC, \
+  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    KC_BSLS, \
+  POKER,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_ENT, \
+  KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, \
+  KC_LCTL,  EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,  KC_LGUI, JOE,     KC_PSCR, KC_LCTL
 ),
 
 
 [_POKER] = LAYOUT_preonic_2x2u( \
-  KC_CAPS, _______, _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
-  _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
-  _______, _______, KC_VOLD, KC_VOLU, KC_MUTE,  KC_F,      KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
-  _______, _______, _______, COPY,    PASTE,    _______,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
-  _______, _______, _______, _______,           _______,   KC_SPC,               _______,   _______,   _______,   _______
+  KC_CAPS, _______,          _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
+  _______, KC_MPRV,          KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
+  _______, TD(LAYER_SWITCH), KC_VOLD, KC_VOLU, KC_MUTE,  _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
+  _______, _______,          _______, COPY,    PASTE,    _______,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
+  _______, _______,          _______, _______,           _______,   KC_SPC,               _______,   _______,   _______,   _______
 ),
 
 [_PROGRAM] = LAYOUT_preonic_2x2u( \
@@ -131,19 +134,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_SELECT] = LAYOUT_preonic_2x2u( \
-  _______,   _______,   _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______, \
-  _______,   _______,   _______,   _______, _______, _______, _______, YANK,    KC_UP,    WORD,     _______, _______, \
-  _______,   KC_LSHIFT, _______,   _______, _______, _______, _______, KC_LEFT, KC_DOWN,  KC_RIGHT, _______, _______, \
-  _______,   _______,   _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______, \
-  _______,   _______,   _______,   _______,          _______, _______,          _______,  _______,  _______, _______
+  _______,   _______,  _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______, \
+  _______,   _______,  _______,   _______, _______, KC_T,    _______, YANK,    KC_UP,    WORD,     _______, _______, \
+  _______,   _______,  _______,   _______, KC_F,    _______, _______, KC_LEFT, KC_DOWN,  KC_RIGHT, KC_BSPC, _______, \
+  _______,   _______,  _______,   KC_C,    KC_V,    _______, _______, _______, _______,  _______,  _______, _______, \
+  _______,   _______,  _______,   _______,          _______, _______,          _______,  _______,  _______, _______
 ),
 
 [_EXTRA] = LAYOUT_preonic_2x2u( \
-  _______,   RESET,     EEP_RST,   _______,   _______,   _______,   _______,   KC_MINS, KC_EQL,  _______, _______, _______, \
-  _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_7,    KC_8,    KC_9,    _______, _______, \
-  _______,   _______,   MU_TOG,    _______,   _______,   _______,   HEADP,     KC_4,    KC_5,    KC_6,    KC_DEL,  _______, \
-  _______,   _______,   _______,   _______,   _______,   _______,   SONG,      KC_1,    KC_2,    KC_3,    _______, _______, \
-  _______,   _______,   _______,   _______,              _______,   _______,            KC_0,    KC_0,    KC_0,    _______
+  _______,   RESET,          EEP_RST,      _______,          _______,   _______,   _______,   KC_MINS, KC_EQL,  _______, _______, _______, \
+  _______,   _______,        _______,      _______,          _______,   _______,   MU_TOG,    KC_7,    KC_8,    KC_9,    _______, _______, \
+  _______,   DYN_REC_START1, DYN_REC_STOP, DYN_MACRO_PLAY1,  _______,   _______,   HEADP,     KC_4,    KC_5,    KC_6,    KC_DEL,  _______, \
+  _______,   _______,        _______,      _______,          _______,   _______,   SONG,      KC_1,    KC_2,    KC_3,    _______, _______, \
+  _______,   _______,        _______,      _______,                     _______,   _______,            KC_0,    KC_0,    KC_0,    _______
 )
 
 };
@@ -152,7 +155,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case HEADP:
       if (record->event.pressed) {
-        SEND_STRING("connect CC:98:8B:D1:B2:95");
+        get_current_wpm();
+        SEND_STRING("");
       }
 
       break;
@@ -186,18 +190,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // Go to the right
         CTRL(KC_RIGHT);
 
-        // Hold shift
-        PRESS(KC_LSHIFT);
-          // Go left
-          CTRL(KC_LEFT);
-        RELEASE(KC_LSHIFT);
+        // Go left
+        CTRL(KC_LEFT);
+
       }
 
       break;
 
     case SONG:
       if (record->event.pressed) {
-        PLAY_SONG(song);
+        PLAY_SONG(mario);
       }
 
       break;
