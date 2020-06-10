@@ -29,9 +29,6 @@
 #define PRESS(keycode) register_code16(keycode)
 #define RELEASE(keycode) unregister_code16(keycode)
 
-#define JOE X(THUMBS)
-#define SNEKKY X(SNEK)
-
 void TAP(uint16_t keycode) {
     PRESS(keycode);
     RELEASE(keycode);
@@ -65,7 +62,7 @@ void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
 
 enum custom_keycodes {
   HEADP = SAFE_RANGE,
-  SONG,
+  C_THUMB,
   C_HOME,
 };
 
@@ -78,18 +75,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [LAYER_SWITCH] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_cln_finished, dance_cln_reset)
 };
 
-enum unicode_names {
-    THUMBS,
-    SNEK
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-    [THUMBS]  = 0x1F44D,  // 👍
-    [SNEK]  = 0x1F40D, // 🐍
-};
-
-
-float mario[][2] = SONG(ZELDA_TREASURE);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -111,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    KC_BSLS, \
   POKER,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_ENT, \
   KC_LSPO,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, \
-  KC_LCTL,  EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,  KC_LGUI, JOE,     KC_PSCR, KC_LCTL
+  KC_LCTL,  EXTR,    EXTR,    KC_LALT,          PROG,    KC_SPC,  KC_LGUI, C_THUMB, KC_PSCR, KC_LCTL
 ),
 
 
@@ -143,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,   RESET,          EEP_RST,      _______,          _______,   _______,   _______,   KC_MINS, KC_EQL,  _______, _______, _______, \
   _______,   _______,        _______,      _______,          _______,   _______,   MU_TOG,    KC_7,    KC_8,    KC_9,    _______, _______, \
   _______,   DYN_REC_START1, DYN_REC_STOP, DYN_MACRO_PLAY1,  _______,   _______,   HEADP,     KC_4,    KC_5,    KC_6,    KC_DEL,  _______, \
-  _______,   _______,        _______,      _______,          _______,   _______,   SONG,      KC_1,    KC_2,    KC_3,    _______, _______, \
+  _______,   _______,        _______,      _______,          _______,   _______,   _______,   KC_1,    KC_2,    KC_3,    _______, _______, \
   _______,   _______,        _______,      _______,                     _______,   _______,            KC_0,    KC_0,    KC_0,    _______
 )
 
@@ -153,8 +138,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case HEADP:
       if (record->event.pressed) {
-        get_current_wpm();
-        SEND_STRING("");
+        SEND_STRING("TODO");
       }
 
       break;
@@ -166,31 +150,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       break;
 
-    case SONG:
+    case C_THUMB:
       if (record->event.pressed) {
-        PLAY_SONG(mario);
+        SEND_STRING(":+1:");
       }
 
       break;
 
   }
   return true;
-};
-
-void matrix_init_user(void) {
-    set_unicode_input_mode(UC_LNX);
-
-    //
-    // This is operating system specific.
-    //
-    //   UC_OSX: MacOS Unicode Hex Input support. Works only up to 0xFFFF.
-    //   Disabled by default.      To enable: go to System Preferences ->
-    //   Keyboard -> Input Sources, and enable Unicode Hex.
-    //
-    //   UC_OSX_RALT: Same as UC_OSX, but sends the Right Alt key for unicode
-    //   input
-    //
-    //   UC_LNX: Unicode input method under Linux. Works up to 0xFFFFF.
-    //   Should work almost anywhere on ibus enabled distros. Without ibus,
-    //   this works under GTK apps, but rarely anywhere else.
 };
