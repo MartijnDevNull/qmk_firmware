@@ -33,10 +33,13 @@
 #define FOLD      LCTL(KC_PMNS)
 #define UFOLD     LCTL(KC_PPLS)
 
-#define MOUSEKEY_DELAY             50
-#define MOUSEKEY_INTERVAL          30
-#define MOUSEKEY_WHEEL_MAX_SPEED   10
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 15
+#define MOUSEKEY_INTERVAL           20
+#define MOUSEKEY_DELAY              100
+#define MOUSEKEY_TIME_TO_MAX        60
+#define MOUSEKEY_MAX_SPEED          7
+#define MOUSEKEY_WHEEL_MAX_SPEED    5
+#define MOUSEKEY_WHEEL_TIME_TO_MAX  60
+#define MOUSEKEY_WHEEL_DELAY        100
 
 #define UNICODE_SELECTED_MODES UC_LNX
 
