@@ -22,8 +22,8 @@
 
 #define ALL       LCTL(KC_A)
 
-#define TER_L     LCTL(KC_COMM)
-#define TER_R     LCTL(KC_DOT)
+#define E_BACK     S(A(KC_LEFT))
+#define E_FORWARD  S(A(KC_RIGHT))
 
 #define SWITCH    LALT(KC_ESC)
 

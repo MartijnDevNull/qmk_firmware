@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_CAPS, _______,          _______, _______, _______,  _______,   _______,   _______,   _______,   UFOLD,     FOLD,      KC_DEL, \
   _______, KC_MPRV,          KC_MPLY, KC_MNXT, KC_F5,    N_TAB,     KC_PAUSE,  T_PREV,    KC_UP,     T_NEXT,    KC_ENT,    W_QUIT, \
   _______, TD(LAYER_SWITCH), KC_VOLD, KC_VOLU, KC_MUTE,  _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_BSPC,   KC_DEL, \
-  _______, _______,          _______, COPY,    PASTE,    _______,   KC_END,    _______,   TER_L,     TER_R,     ALL,       C_HOME, \
+  _______, _______,          _______, COPY,    PASTE,    _______,   KC_END,    _______,   E_BACK,    E_FORWARD, ALL,       C_HOME, \
   _______, _______,          _______, _______,           _______,   KC_SPC,               _______,   _______,   _______,   _______
 ),
 
