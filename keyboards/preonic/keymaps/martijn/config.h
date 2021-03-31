@@ -30,8 +30,7 @@
 #define OSUP      LCTL(LALT(KC_UP))
 #define OSDOWN    LCTL(LALT(KC_DOWN))
 
-#define FOLD      LCTL(KC_PMNS)
-#define UFOLD     LCTL(KC_PPLS)
+#define PUSH_2_TALK LCTL(KC_F23)
 
 #define MOUSEKEY_INTERVAL           20
 #define MOUSEKEY_DELAY              100
